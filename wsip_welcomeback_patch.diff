@@ -1,0 +1,22 @@
+--- header.tpl
++++ header_patch.tpl
+@@ -211,7 +211,9 @@
+ 		
+ 		{if $this->user->activationCode && REGISTER_ACTIVATION_METHOD == 1}<p class="warning">{lang}wcf.user.register.needsActivation{/lang}</p>{/if}
+ 		
++		{if SHOW_WELCOMEBACK}
+ 		{if $this->session->isNew}<p class="info">{lang}wsip.header.welcomeBack{/lang}</p>{/if}
++		{/if}
+ 		
+ 		{if $this->user->numberOfInvitations && $this->user->getInvitations()|count}
+ 			<div class="info deletable" id="invitationContainer">
+@@ -242,7 +244,9 @@
+ 	
+ 	{elseif !$this->session->spiderID}
+ 		
++		{if SHOW_WELCOMEBACK}
+ 		{if $this->session->isNew}<p class="info">{lang}wcf.user.register.welcome{/lang}</p>{/if}
++		{/if}
+ 		
+ 	{/if}
+ 	{if OFFLINE == 1 && $this->user->getPermission('user.portal.canViewPortalOffline')}
